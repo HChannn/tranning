@@ -66,6 +66,9 @@ public class Topic_00_Format extends BaseTest {
         // Ví dụ: actualEmail, expectedEmail
         // Rule để đặt tên cho biến, object theo kiểu camelCase, tức là chữ đầu viết thường còn các chữ sau viết hoa.
         // Ví dụ:hoangThiThuTrang thì chữ cái đầu trong tên riêng viết hoa
+
+        // Tại sao xpath của error message lại //div[@class='field']//label[@id='txtEmail-error'], thế //label[@id='txtEmail-error'] này có tìm đc không???
+        // Các cái sau cũng vậy nhé, chưa tối ưu đc xpath
         String actualText = driver.findElement(By.xpath("//div[@class='field']//label[@id='txtEmail-error']")).getText();
         System.out.println("Text: " + actualText);
         String expectedText = "Vui lòng nhập email";
