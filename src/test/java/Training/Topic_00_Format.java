@@ -72,12 +72,24 @@ public class Topic_00_Format extends BaseTest {
 
     @Test
     public void TC_02_Verify_error_message_email() {
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")). clear();
         driver.findElement(By.xpath("//input[@id='txtFirstname']")).sendKeys("Chang");
+
+        driver.findElement(By.xpath("//input[@id='txtEmail']")). clear();
         driver.findElement(By.xpath("//input[@id='txtEmail']")).sendKeys("123@456@789");
+
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")). clear();
         driver.findElement(By.xpath("//input[@id='txtCEmail']")).sendKeys("123@456@789");
+
+        driver.findElement(By.xpath("//input[@id='txtPassword']")). clear();
         driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys("123123aA@");
+
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")). clear();
         driver.findElement(By.xpath("//input[@id='txtCPassword']")).sendKeys("123123aA@");
+
+        driver.findElement(By.xpath("//input[@id='txtPhone']")). clear();
         driver.findElement(By.xpath("//input[@id='txtPhone']")).sendKeys("0379423906");
+
         driver.findElement(By.xpath("//button[@class='btn_pink_sm fs16']")).click();
 
         String actualEmail = driver.findElement(By.xpath("//label[text()='Vui lòng nhập email hợp lệ']")).getText();
