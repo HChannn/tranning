@@ -26,40 +26,10 @@ public class Topic_00_Format extends BaseTest {
         driver.quit();
     }
 
-    @Test
-    public void Testcase_01() {
-        // Ham nay dung de tim kiem locator cua element va get Text cua element do = code .getText()
-        String actualText = driver.findElement(By.xpath("//div[@class='field_link']")).getText();
-        System.out.println("text là: " + actualText);
-
-        String expectedText = "Tôi đồng ý với các chính sách và thỏa thuận sử dụng của Alada.vn";
-
-        // Ham nay de so sanh 2 text = nhau giua actual result va expected result
-        Assert.assertEquals(actualText, expectedText);
-    }
-
-    @Test
-    public void Testcase_02() {
-        String actualText = driver.findElement(By.xpath("//div[@class='columm login_col_8']//p[@class='title_login']")).getText();
-        System.out.println("text là: " + actualText);
-
-        String expectedText1 = "Đăng ký tài khoản mới";
-
-        Assert.assertEquals(actualText, expectedText1);
-    }
-
-    @Test
-    public void Testcase_03() {
-        String actualText = driver.findElement(By.xpath("//div[@class='field']//label[text()='Họ và tên']")).getText();
-        System.out.println("Text: " + actualText);
-
-        String expectedText = "Họ và tên";
-        Assert.assertEquals(actualText, expectedText);
-    }
 
     // Nên đặt tên cho testcase: ví dụ: TCS_04_Verify error message
     @Test
-    public void Testcase_04() {
+    public void TC_01_Verify_error_message() {
         driver.findElement(By.xpath("//div[@class='field_btn']//button[@class='btn_pink_sm fs16']")).click();
 
         // Nên đặt tên cho biến theo element đang xử lí
@@ -69,125 +39,126 @@ public class Topic_00_Format extends BaseTest {
 
         // Tại sao xpath của error message lại //div[@class='field']//label[@id='txtEmail-error'], thế //label[@id='txtEmail-error'] này có tìm đc không???
         // Các cái sau cũng vậy nhé, chưa tối ưu đc xpath
-        String actualText = driver.findElement(By.xpath("//div[@class='field']//label[@id='txtEmail-error']")).getText();
-        System.out.println("Text: " + actualText);
-        String expectedText = "Vui lòng nhập email";
-        Assert.assertEquals(actualText, expectedText);
+        String actualEmail = driver.findElement(By.xpath("//label[@id='txtEmail-error']")).getText();
+        System.out.println("Text: " + actualEmail);
+        String expectedEmail = "Vui lòng nhập email";
+        Assert.assertEquals(actualEmail, expectedEmail);
 
-        String actualText1 = driver.findElement(By.xpath("//div[@class='field']//label[@id='txtFirstname-error']")).getText();
-        System.out.println("Text: " + actualText1);
-        String expectedText1 = "Vui lòng nhập họ tên";
-        Assert.assertEquals(actualText1, expectedText1);
+        String actualName = driver.findElement(By.xpath("//label[@id='txtFirstname-error']")).getText();
+        System.out.println("Text: " + actualName);
+        String expectedName = "Vui lòng nhập họ tên";
+        Assert.assertEquals(actualName, expectedName);
 
-        String actualText2 = driver.findElement(By.xpath("//div[@class='field']//label[@id='txtCEmail-error']")).getText();
-        System.out.println("Text: " + actualText2);
-        String expectedText2 = "Vui lòng nhập lại địa chỉ email";
-        Assert.assertEquals(actualText2, expectedText2);
+        String actualCEmail = driver.findElement(By.xpath("//label[@id='txtCEmail-error']")).getText();
+        System.out.println("Text: " + actualCEmail);
+        String expectedCEmail = "Vui lòng nhập lại địa chỉ email";
+        Assert.assertEquals(actualCEmail, expectedCEmail);
 
-        String actualText3 = driver.findElement(By.xpath("//div[@class='field']//label[@id='txtPassword-error']")).getText();
-        System.out.println("Text " + actualText3);
-        String expectedText3 = "Vui lòng nhập mật khẩu";
-        Assert.assertEquals(actualText3, expectedText3);
+        String actualPassword = driver.findElement(By.xpath("//label[@id='txtPassword-error']")).getText();
+        System.out.println("Text " + actualPassword);
+        String expectedPassword = "Vui lòng nhập mật khẩu";
+        Assert.assertEquals(actualPassword, expectedPassword);
 
-        String actualText4 = driver.findElement(By.xpath("//div[@class='field']//label[@id='txtCPassword-error']")).getText();
-        System.out.println("Text " + actualText4);
-        String expectedText4 = "Vui lòng nhập lại mật khẩu";
-        Assert.assertEquals(actualText4, expectedText4);
+        String actualCPassword = driver.findElement(By.xpath("//label[@id='txtCPassword-error']")).getText();
+        System.out.println("Text " + actualCPassword);
+        String expectedCPassord = "Vui lòng nhập lại mật khẩu";
+        Assert.assertEquals(actualCPassword, expectedCPassord);
 
-        String actualText5 = driver.findElement(By.xpath("//div[@class='field']//label[@id='txtPhone-error']")).getText();
-        System.out.println("Text " + actualText5);
-        String expectedText5 = "Vui lòng nhập số điện thoại.";
-        Assert.assertEquals(actualText5, expectedText5);
+        String actualPhone = driver.findElement(By.xpath("//label[@id='txtPhone-error']")).getText();
+        System.out.println("Text " + actualPhone);
+        String expectedPhone = "Vui lòng nhập số điện thoại.";
+        Assert.assertEquals(actualPhone, expectedPhone);
     }
 
     @Test
-    public void Testcase_05() {
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtFirstname']")).sendKeys("Chang");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtEmail']")).sendKeys("123@456@789");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCEmail']")).sendKeys("123@456@789");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPassword']")).sendKeys("123123aA@");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCPassword']")).sendKeys("123123aA@");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPhone']")).sendKeys("0379423906");
-        driver.findElement(By.xpath("//div[@class='field_btn']//button[@class='btn_pink_sm fs16']")).click();
+    public void TC_02_Verify_error_message_email() {
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).sendKeys("Chang");
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).sendKeys("123@456@789");
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).sendKeys("123@456@789");
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys("123123aA@");
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).sendKeys("123123aA@");
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).sendKeys("0379423906");
+        driver.findElement(By.xpath("//button[@class='btn_pink_sm fs16']")).click();
 
-        String actualText = driver.findElement(By.xpath("//div[@class='field']//label[text()='Vui lòng nhập email hợp lệ']")).getText();
-        System.out.println("Text: " + actualText);
-        String expectedText = "Vui lòng nhập email hợp lệ";
-        Assert.assertEquals(actualText, expectedText);
+        String actualEmail = driver.findElement(By.xpath("//label[text()='Vui lòng nhập email hợp lệ']")).getText();
+        System.out.println("Text: " + actualEmail);
+        String expectedEmail = "Vui lòng nhập email hợp lệ";
+        Assert.assertEquals(actualEmail, expectedEmail);
 
-        String actualText1 = driver.findElement(By.xpath("//div[@class='field']//label[text()='Email nhập lại không đúng']")).getText();
-        System.out.println("Text: " + actualText1);
-        String expectedText1 = "Email nhập lại không đúng";
-        Assert.assertEquals(actualText1, expectedText1);
+        String actualCEmail = driver.findElement(By.xpath("//label[text()='Email nhập lại không đúng']")).getText();
+        System.out.println("Text: " + actualCEmail);
+        String expectedCEmail = "Email nhập lại không đúng";
+        Assert.assertEquals(actualCEmail, expectedCEmail);
     }
 
     @Test
-    public void Testcase_06() {
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtFirstname']")).sendKeys("Chang");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.vn");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPassword']")).sendKeys("123123aA@");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCPassword']")).sendKeys("123123aA@");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPhone']")).sendKeys("0379423906");
-        driver.findElement(By.xpath("//div[@class='field_btn']//button[@class='btn_pink_sm fs16']")).click();
+    public void TC_03_Verify_error_message_Cpassword() {
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).sendKeys("Chang");
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.vn");
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys("123123aA@");
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).sendKeys("123123aA@");
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).sendKeys("0379423906");
+        driver.findElement(By.xpath("//button[@class='btn_pink_sm fs16']")).click();
 
-        String actualText = driver.findElement(By.xpath("//div[@class='field']//label[text()='Email nhập lại không đúng']")).getText();
-        System.out.println("Text: " + actualText);
-        String expectedText = "Email nhập lại không đúng";
-        Assert.assertEquals(actualText, expectedText);
+        String actualCPassword = driver.findElement(By.xpath("//label[text()='Email nhập lại không đúng']")).getText();
+        System.out.println("Text: " + actualCPassword);
+        String expectedCPassword = "Email nhập lại không đúng";
+        Assert.assertEquals(actualCPassword, expectedCPassword);
     }
 
     @Test
-    public void Testcase_07() {
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtFirstname']")).sendKeys("Chang");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.com");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPassword']")).sendKeys("123");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCPassword']")).sendKeys("123");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPhone']")).sendKeys("0379423906");
-        driver.findElement(By.xpath("//div[@class='field_btn']//button[@class='btn_pink_sm fs16']")).click();
+    public void TC_04_Verify_error_message_password() {
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).sendKeys("Chang");
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.com");
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys("123");
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).sendKeys("123");
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).sendKeys("0379423906");
+        driver.findElement(By.xpath("//button[@class='btn_pink_sm fs16']")).click();
 
-        String actualText = driver.findElement(By.xpath("//div[@class='field']//label[text()='Mật khẩu phải có ít nhất 6 ký tự' and @id='txtPassword-error']")).getText();
-        System.out.println("Text Mật khẩu: " + actualText);
-        String expectedText = "Mật khẩu phải có ít nhất 6 ký tự";
-        Assert.assertEquals(actualText, expectedText);
+//        String actualPassword = driver.findElement(By.xpath("//label[@id='txtPassword-error']")).getText();
+        String actualPassword = driver.findElement(By.xpath("//label[@id='txtPassword-error']")).getText();
+        System.out.println("Text Mật khẩu: " + actualPassword);
+        String expectedPassword = "Mật khẩu phải có ít nhất 6 ký tự";
+        Assert.assertEquals(actualPassword, expectedPassword);
 
-        String actualText1 = driver.findElement(By.xpath("//div[@class='field']//label[text()='Mật khẩu phải có ít nhất 6 ký tự' and @id='txtCPassword-error']")).getText();
-        System.out.println("Text Nhập lại Mật khẩu: " + actualText1);
-        String expectedText1 = "Mật khẩu phải có ít nhất 6 ký tự";
-        Assert.assertEquals(actualText1, expectedText1);
+        String actualCPassword = driver.findElement(By.xpath("//label[@id='txtCPassword-error']")).getText();
+        System.out.println("Text Nhập lại Mật khẩu: " + actualCPassword);
+        String expectedCPassword = "Mật khẩu phải có ít nhất 6 ký tự";
+        Assert.assertEquals(actualCPassword, expectedCPassword);
     }
 
     @Test
-    public void Testcase_08() {
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtFirstname']")).sendKeys("Chang");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.com");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPassword']")).sendKeys("123123");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCPassword']")).sendKeys("123121");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPhone']")).sendKeys("0379423906");
-        driver.findElement(By.xpath("//div[@class='field_btn']//button[@class='btn_pink_sm fs16']")).click();
+    public void TC_05_Verify_error_message_Cpassword() {
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).sendKeys("Chang");
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.com");
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys("123123");
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).sendKeys("123121");
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).sendKeys("0379423906");
+        driver.findElement(By.xpath("//button[@class='btn_pink_sm fs16']")).click();
 
-        String actualText = driver.findElement(By.xpath("//div[@class='field']//label[text()='Mật khẩu bạn nhập không khớp']")).getText();
-        System.out.println("Text: " + actualText);
-        String expectedText = "Mật khẩu bạn nhập không khớp";
-        Assert.assertEquals(actualText, expectedText);
+        String actualCPassword = driver.findElement(By.xpath("//label[@id='txtCPassword-error']")).getText();
+        System.out.println("Text: " + actualCPassword);
+        String expectedCPassword = "Mật khẩu bạn nhập không khớp";
+        Assert.assertEquals(actualCPassword, expectedCPassword);
 
     }
 
     @Test
-    public void Testcase_09() {
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtFirstname']")).sendKeys("Chang");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.com");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPassword']")).sendKeys("123123");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtCPassword']")).sendKeys("123123");
-        driver.findElement(By.xpath("//div[@class='field']//input[@id='txtPhone']")).sendKeys("0379423");
-        driver.findElement(By.xpath("//div[@class='field_btn']//button[@class='btn_pink_sm fs16']")).click();
+    public void TC_06_Verify_error_message_Phone() {
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).sendKeys("Chang");
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).sendKeys("changhtt@icetea.com");
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).sendKeys("changhtt@icetea.com");
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys("123123");
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).sendKeys("123123");
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).sendKeys("0379423");
+        driver.findElement(By.xpath("//button[@class='btn_pink_sm fs16']")).click();
 
-        String actualText = driver.findElement(By.xpath("//div[@class='field']//label[text()='Số điện thoại phải từ 10-11 số. ']")).getText();
-        System.out.println("Text: " + actualText);
-        String expectedText = "Số điện thoại phải từ 10-11 số.";
-        Assert.assertEquals(actualText, expectedText);
+        String actualPhone = driver.findElement(By.xpath("//label[text()='Số điện thoại phải từ 10-11 số. ']")).getText();
+        System.out.println("Text: " + actualPhone);
+        String expectedPhone = "Số điện thoại phải từ 10-11 số.";
+        Assert.assertEquals(actualPhone, expectedPhone);
     }
 }
