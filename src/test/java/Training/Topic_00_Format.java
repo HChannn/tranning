@@ -89,6 +89,14 @@ public class Topic_00_Format extends BaseTest {
         System.out.println("Text: " + actualCEmail);
         String expectedCEmail = "Email nhập lại không đúng";
         Assert.assertEquals(actualCEmail, expectedCEmail);
+
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).clear();
+
     }
 
     @Test
@@ -105,6 +113,13 @@ public class Topic_00_Format extends BaseTest {
         System.out.println("Text: " + actualCPassword);
         String expectedCPassword = "Email nhập lại không đúng";
         Assert.assertEquals(actualCPassword, expectedCPassword);
+
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).clear();
     }
 
     @Test
@@ -127,6 +142,13 @@ public class Topic_00_Format extends BaseTest {
         System.out.println("Text Nhập lại Mật khẩu: " + actualCPassword);
         String expectedCPassword = "Mật khẩu phải có ít nhất 6 ký tự";
         Assert.assertEquals(actualCPassword, expectedCPassword);
+
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).clear();
     }
 
     @Test
@@ -144,6 +166,13 @@ public class Topic_00_Format extends BaseTest {
         String expectedCPassword = "Mật khẩu bạn nhập không khớp";
         Assert.assertEquals(actualCPassword, expectedCPassword);
 
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).clear();
+
     }
 
     @Test
@@ -160,5 +189,12 @@ public class Topic_00_Format extends BaseTest {
         System.out.println("Text: " + actualPhone);
         String expectedPhone = "Số điện thoại phải từ 10-11 số.";
         Assert.assertEquals(actualPhone, expectedPhone);
+
+        driver.findElement(By.xpath("//input[@id='txtFirstname']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCEmail']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtCPassword']")).clear();
+        driver.findElement(By.xpath("//input[@id='txtPhone']")).clear();
     }
 }
