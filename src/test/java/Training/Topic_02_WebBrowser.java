@@ -11,14 +11,14 @@ public class Topic_02_WebBrowser extends BaseTest {
     WebDriver driver;
 
     // Before Class để chạy hàm trong khối annotation before này đầu tiên, tránh việc khởi tạo nhiều lần
-    @BeforeClass
+    @BeforeMethod
     public void beforeClass() {
         driver = getBrowserDriver("chrome");
         driver.get("http://live.techpanda.org/");
     }
 
     // After Class mỗi khi class chaỵ xong sẽ chạy vào khối annotation after này
-    @AfterClass
+    @AfterMethod
     public void afterClass() {
         driver.quit();
     }
