@@ -8,10 +8,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.Random;
+
 
 public class Topic_03_Textbox_Textarea extends BaseTest {
     WebDriver driver;
-
+    String email = "hoangchang"+ getRandomNumber() +"@gmail.com";
     @BeforeClass
     public void beforeMethod() {
         driver = getBrowserDriver("chrome");
@@ -35,7 +37,7 @@ public class Topic_03_Textbox_Textarea extends BaseTest {
         driver.findElement(By.xpath("//input[@id= 'firstname']")).sendKeys("Hoang");
         driver.findElement(By.xpath("//input[@id= 'middlename']")).sendKeys("Thi Thu");
         driver.findElement(By.xpath("//input[@id= 'lastname']")).sendKeys("Chang");
-        driver.findElement(By.xpath("//input[@id= 'email_address']")).sendKeys("hoangchang01@gmail.com");
+        driver.findElement(By.xpath("//input[@id= 'email_address']")).sendKeys(email);
         driver.findElement(By.xpath("//input[@id= 'password']")).sendKeys("123456789aA@");
         driver.findElement(By.xpath("//input[@id= 'confirmation']")).sendKeys("123456789aA@");
         driver.findElement(By.xpath("//button[@title='Register']")).click();
@@ -45,18 +47,15 @@ public class Topic_03_Textbox_Textarea extends BaseTest {
         String expectedMessage = "Thank you for registering with Main Website Store.";
         Assert.assertEquals(actualMessage, expectedMessage);
 
-        String actualName = driver.findElement(By.xpath("//div[@class='col-1']//div[@class='box-content']/p/text()[1]")).getText();
+        String actualName = driver.findElement(By.xpath("//div[@class='col-1']//div[@class='box-content']//p")).getText();
         System.out.println("Text: " + actualName);
-        String expectedName = "Hoang Thi Thu Chang" +
-                "hoangchang01@gmail.com" + "Change Password";
+        String expectedName = "Hoang Thi Thu Chang\n" +
+                email + "\n" +
+                "Change Password";
         Assert.assertEquals(actualName, expectedName);
 
-        String actualEmail = driver.findElement(By.xpath("//div[@class='col-1']//div[@class='box-content']/p/text()[2]")).getText();
-        System.out.println("Text: " + actualEmail);
-        String expectedEmail = "hoangchang01@gmail.com";
-        Assert.assertEquals(actualEmail, expectedEmail);
-
         driver.findElement(By.xpath("//a[text()='Mobile']")).click();
+        driver.findElement(By.xpath("//a[text()='Samsung Galaxy']")).click();
         driver.findElement(By.xpath("//a[text()='Add Your Review']")).click();
         driver.findElement(By.xpath("//input[@type='radio' and @value='5']")).click();
         driver.findElement(By.xpath("//textarea[@id='review_field']")).sendKeys("review");
@@ -71,6 +70,7 @@ public class Topic_03_Textbox_Textarea extends BaseTest {
 
         driver.findElement(By.xpath("//a[@href='http://live.techpanda.org/index.php/customer/account/']//span[text()='Account']")).click();
         driver.findElement(By.xpath("//div[@id='header-account']//a[@title='Log Out']")).click();
+        Thread.sleep(6000);
 
         String actualUrlHomePage = driver.getCurrentUrl();
         System.out.println("Url: " + actualUrlHomePage);
@@ -81,6 +81,10 @@ public class Topic_03_Textbox_Textarea extends BaseTest {
 
     }
 
+    public int getRandomNumber() {
+        Random rand = new Random();
+        return rand.nextInt(9999);
+    }
 
 
 }
