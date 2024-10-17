@@ -49,7 +49,7 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
         driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys("Chang");
         String employeeID = String.valueOf(driver.findElement(By.xpath("//div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']")).getAttribute("value"));
         driver.findElement(By.xpath("//span[@class='oxd-switch-input oxd-switch-input--active --label-right']")).click();
-        driver.findElement(By.xpath("//label[text()='Username']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys("Chang03");
+        driver.findElement(By.xpath("//label[text()='Username']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys("Chang" + getRandomNumber());
         driver.findElement(By.xpath("//label[text()='Password']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys("admin123");
         driver.findElement(By.xpath("//label[text()='Confirm Password']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys("admin123");
 
@@ -91,6 +91,7 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
         driver.findElement(By.xpath("//button[@class='oxd-icon-button oxd-table-cell-action-space']//i[@class='oxd-icon bi-pencil-fill']")).click();
 
 //step 12 - Verify dữ liệu đã tạo hiển thị đúng
+        Thread.sleep(5000);
         String actualNumber = driver.findElement(By.xpath("//label[text()='Number']/ancestor::div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']")).getAttribute("value");
         System.out.println("Text: " + actualNumber);
         String expectedNumber = "0379423909";
