@@ -3,6 +3,8 @@ package Training;
 import commons.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -13,7 +15,8 @@ import java.util.Random;
 
 public class Topic_04_TC02_textbox_textarea extends BaseTest {
     WebDriver driver;
-//    String email = "hoangchang"+ getRandomNumber() +"@gmail.com";
+  String UserName = "Chang" + getRandomNumber();
+  WebDriverWait explicitWait;
     @BeforeClass
     public void beforeMethod() {
         driver = getBrowserDriver("chrome");
@@ -49,7 +52,7 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
         driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys("Chang");
         String employeeID = String.valueOf(driver.findElement(By.xpath("//div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']")).getAttribute("value"));
         driver.findElement(By.xpath("//span[@class='oxd-switch-input oxd-switch-input--active --label-right']")).click();
-        driver.findElement(By.xpath("//label[text()='Username']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys("Chang" + getRandomNumber());
+        driver.findElement(By.xpath("//label[text()='Username']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys(UserName);
         driver.findElement(By.xpath("//label[text()='Password']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys("admin123");
         driver.findElement(By.xpath("//label[text()='Confirm Password']/ancestor::div[contains(@class, 'oxd-input-group')]/div/input")).sendKeys("admin123");
 
@@ -91,7 +94,7 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
         driver.findElement(By.xpath("//button[@class='oxd-icon-button oxd-table-cell-action-space']//i[@class='oxd-icon bi-pencil-fill']")).click();
 
 //step 12 - Verify dữ liệu đã tạo hiển thị đúng
-        Thread.sleep(5000);
+        waitInvisibleExplicit("xpath");
         String actualNumber = driver.findElement(By.xpath("//label[text()='Number']/ancestor::div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']")).getAttribute("value");
         System.out.println("Text: " + actualNumber);
         String expectedNumber = "0379423909";
@@ -110,7 +113,7 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
         driver.findElement(By.xpath("//a[@href='/web/index.php/auth/logout']")).click();
 
 //step 15 - Tại MH Login nhập thông tin đã tạo hợp ệ ở step 05
-        driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Chang03");
+        driver.findElement(By.xpath("//input[@name='username']")).sendKeys(UserName);
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
 
@@ -119,6 +122,7 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
 
 
 //step 17 - Verify các thông tin hiển thị
+        Thread.sleep(5000);
         String actualFirstName1 = driver.findElement(By.xpath("//input[@name='firstName']")).getAttribute("value");
         System.out.println("Text: " + actualFirstName1);
         String expectedFirstName1 = "Hoàng";
@@ -143,6 +147,7 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
         driver.findElement(By.xpath("//button[@class='oxd-icon-button oxd-table-cell-action-space']//i[@class='oxd-icon bi-pencil-fill']")).click();
 
 //step 19 - Verify thông tin hien thị
+        Thread.sleep(5000);
         String actualNumber1 = driver.findElement(By.xpath("//label[text()='Number']/ancestor::div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']")).getAttribute("value");
         System.out.println("Text: " + actualNumber1);
         String expectedNumber1 = "0379423909";
@@ -152,56 +157,16 @@ public class Topic_04_TC02_textbox_textarea extends BaseTest {
         System.out.println("Text: " + actualComment1);
         String expectedComment1 = "comment";
         Assert.assertEquals(actualComment1, expectedComment1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         Thread.sleep(5000);
 }
 
     private String getRandomNumber() {
         Random rand = new Random();
         return String.valueOf(rand.nextInt(999));
+    }
+
+    private void waitInvisibleExplicit(String locator) {
+        explicitWait = new WebDriverWait(driver, 10);
+        explicitWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(locator)));
     }
 }
