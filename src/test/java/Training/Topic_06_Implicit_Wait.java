@@ -44,9 +44,10 @@ public class Topic_06_Implicit_Wait extends BaseTest {
         explicitWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("textbox")));
         driver.findElement(By.xpath("textbox")).sendKeys("aaa");
 
-        // Visible
-        // Invisible
-        // Presence
+        // Visible : Có trong DOM + hiển thị trên UI => User nhìn thấy và thao tác được, dùng Xpath được hightlight
+        // Invisible : Không hiển thị trên UI -> Có thể có trong DOM hoặc Không =>
+        // Presence : Bắt buộc có trong DOM -> Có thể hiển thị trên UI hoặc không
+        // Staleness: Không có trong DOM + không hiển thị trên UI
         // Clickable
 
         explicitWait.until(ExpectedConditions.elementToBeClickable(By.xpath("button")));
